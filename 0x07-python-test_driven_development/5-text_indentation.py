@@ -1,17 +1,26 @@
 #!/usr/bin/python3
-"""text indent"""
+"""Defines a function that prints a text with 2 new lines after each,
+of these characters: . ? and :
+Attributes:
+    text_indentation: function that prints a text with specific conditions
+"""
 
 
 def text_indentation(text):
-    """text indent"""
+    """Prints a text with 2 new lines after .?: characters.
+
+    Args:
+        text (str): string to be examined.
+
+    Raises:
+        TypeError: If text is not of type str.
+    """
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    for delimeter in "?:.":
-        words = (delimeter + "\n\n").join(
-                [index.strip(" ") for index in words.split(delimeter)])
+    for delim in ".:?":
+        text = (delim + "\n\n").join(
+            [line.strip(" ") for line in text.split(delim)])
 
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/5-text_indentation.txt")
+    print(text, end="")
